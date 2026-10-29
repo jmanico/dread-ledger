@@ -3,6 +3,7 @@
 <p align="center"><strong>Leave the evidence. Bury the secrets.</strong><br>Security logging prompts for AI coding agents.</p>
 
 Add security logging to an existing application in small, verified waves.
+
 Inspired by [Trim Reaper](https://github.com/jmanico/trim-reaper) and
 [Grim Prompter](https://github.com/jmanico/grim-prompter).
 
