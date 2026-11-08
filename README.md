@@ -61,5 +61,4 @@ spent on it.
 
 ## License
 
-Dread Ledger's original prompts and documentation are licensed under the
-[MIT License](LICENSE). Copyright (c) 2026 Jim Manico.
+Dread Ledger's original prompts and documentation are available under the [MIT License](LICENSE), with copyright held by Manicode Security. You may use, modify, distribute, and sell copies, including in commercial products, provided that you retain the copyright and permission notices in copies or substantial portions of the software. The license does not require public promotional credit for every commercial use.
