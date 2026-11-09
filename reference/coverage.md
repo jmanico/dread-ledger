@@ -48,9 +48,9 @@ Use these passes to organize the review:
 | Pass | Questions to resolve |
 | --- | --- |
 | [Foundation](../prompts/02-foundation.md) | Can the existing logging path protect data, bound resource use, preserve business behavior, and make loss visible? |
-| [Critical gaps](../prompts/03-critical.md) | What evidence is needed for privileged misuse, tenant-boundary violations, sensitive-data loss, and changes to security or monitoring? |
+| [Critical gaps](../prompts/03-critical.md) | What evidence is needed for privileged misuse, tenant-boundary violations, sensitive-data loss, and changes to security, monitoring, models, prompts, or knowledge bases? |
 | [Identity and access](../prompts/04-high.md) | Can investigators distinguish authentication, credential, session, and access-control outcomes across local and delegated flows? |
-| [Validation and abuse](../prompts/05-medium.md) | Which existing validators, limits, integrity checks, and detectors produce useful signals, and what do those signals actually establish? |
+| [Validation and abuse](../prompts/05-medium.md) | Which existing validators, limits, integrity checks, guardrails, evaluations, and drift detectors produce useful signals, and what do those signals actually establish? Can investigators identify what a model received? |
 | [Context](../prompts/06-context.md) | Which account, data, upload, process, and job transitions answer a specific investigation question? |
 
 Keep applicable gaps visible even when their implementation belongs in a later

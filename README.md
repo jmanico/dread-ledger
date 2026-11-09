@@ -18,16 +18,16 @@ Inspired by [Trim Reaper](https://github.com/jmanico/trim-reaper) and
 For file-based use, give the agent this checkout's path and the selected prompt.
 Resolve library references here and make changes in the application checkout.
 For clipboard use, include the [security event checklist](reference/security-events.md)
-with the shared instruction and assessment prompt. Assessment reviews all 90
+with the shared instruction and assessment prompt. Assessment reviews all 99
 items, then adds requirements specific to the application.
 
 | Pass | Purpose | Prompt |
 | --- | --- | --- |
 | Assess | Inventory code, controls, consumers, and evidence gaps | [01 · Assess](prompts/01-assess.md) |
 | Wave 0 · Foundation | Safe schema, existing logger integration, privacy, bounded delivery | [02 · Foundation](prompts/02-foundation.md) |
-| Wave 1 · Critical gaps | Privileged actions, sensitive operations, monitoring tampering | [03 · Critical](prompts/03-critical.md) |
+| Wave 1 · Critical gaps | Privileged actions, sensitive operations, monitoring tampering, model and corpus changes | [03 · Critical](prompts/03-critical.md) |
 | Wave 2 · High gaps | Authentication, authorization, recovery, and sessions | [04 · High](prompts/04-high.md) |
-| Wave 3 · Medium gaps | Validation, abuse controls, uploads, and workflow failures | [05 · Medium](prompts/05-medium.md) |
+| Wave 3 · Medium gaps | Validation, abuse controls, uploads, workflow failures, and AI drift signals | [05 · Medium](prompts/05-medium.md) |
 | Wave 4 · Lower-priority context | Useful lifecycle and investigation context | [06 · Context](prompts/06-context.md) |
 | Every wave | Adversarial tests, consumer checks, canary and rollback plan | [07 · Verify and roll out](prompts/07-verify-and-rollout.md) |
 | Focused repair | Existing logs leak data, inject records, or exhaust resources | [08 · Repair](prompts/08-repair.md) |
@@ -41,8 +41,9 @@ report checks not run.
 ## Supporting references
 
 - [Runbook](runbook.md): scope, gates, and a reusable private ledger.
-- [Security event checklist](reference/security-events.md): 90 review items
-  spanning identity, data, infrastructure, delivery, AI agents, and audit health.
+- [Security event checklist](reference/security-events.md): 99 review items
+  spanning identity, data, infrastructure, delivery, AI agents, model and
+  retrieval drift, and audit health.
 - [Coverage](reference/coverage.md): application-specific inventory and evidence
   requirements.
 - [Event contract](reference/event-contract.md): privacy, trusted fields,
