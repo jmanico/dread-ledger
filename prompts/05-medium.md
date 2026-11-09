@@ -9,9 +9,10 @@ consequential gaps. Instrument existing controls and validators rather than
 creating new attack detection.
 
 Use reference/security-events.md for validation, abuse, resource controls,
-business workflows, cryptographic failures, and AI/tool signals. Include replay
-and idempotency failures, approval bypass, supply-chain verification failures,
-and existing fraud/control detections; promote high-impact gaps as needed.
+business workflows, cryptographic failures, AI/tool signals, and model and
+retrieval drift. Include replay and idempotency failures, approval bypass,
+supply-chain verification failures, and existing fraud/control detections;
+promote high-impact gaps as needed.
 
 Inspect input/output validation, rate limits, suspicious session limits, upload
 scan and processing results, CSRF/CSP controls, cryptographic failures, webhook
@@ -41,6 +42,21 @@ rule/version, and actual control outcomes. Keep prompts, tool content, inputs,
 outputs, and signatures excluded. Do not introduce blocking or quarantine
 policy. Distinguish absent functionality from a relevant but unavailable
 detector.
+
+For model and retrieval drift, attribute each model call and retrieval to the
+served model, prompt, guardrail, index, and embedding-model versions from
+deployment configuration or the serving response. Record retrieved document
+IDs, ranks, scores, trust tiers, and the applied tenant filter so investigators
+can identify what the model received. Record outcomes from existing
+guardrails, refusals, canary or evaluation suites, baselines, and drift
+detectors with detector, baseline version, segment, window, and threshold
+reference. Never log prompt, completion, query, chunk, or system-instruction
+text or unkeyed hashes of it. Do not build a drift detector or change
+guardrail enforcement. For consumer rules, segment baselines by route, tenant,
+and model version; revalidate after model or prompt releases; and require
+persistence and minimum volume for rate alerts. A confirmed unauthorized
+cross-tenant retrieval must not wait for volume or persistence conditions.
+Thresholds remain owner decisions.
 
 Do not conflate ordinary validation failure with proven malicious behavior.
 Exercise benign client mistakes, spoofed tool claims, rejected origins, and

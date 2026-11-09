@@ -113,8 +113,9 @@ Gate deployment:
 Compare the current target revision/diff and configuration with the ledger.
 Reuse unchanged evidence at its original revision; do not label it newly run.
 Revalidate rows affected by logger/schema/filter, identity/tenant, policy,
-transport, collector, consumer, or event-mapping changes. Shared changes can
-invalidate many rows. Explain why unaffected evidence remains valid.
+transport, collector, consumer, event-mapping, or model/prompt/guardrail/index
+version changes. Shared changes can invalidate many rows. Explain why
+unaffected evidence remains valid.
 
 Downgrade stale covered rows to missing (unverified), or unavailable_signal when
 access/signals are missing. Revisit not_applicable when architecture changes.

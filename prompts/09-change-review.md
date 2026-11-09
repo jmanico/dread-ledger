@@ -19,7 +19,10 @@ Trace new or moved security decisions, renamed events, changed field types,
 logger filters, sampling, privacy controls, queue/failure policy, tenant
 context, transports, retention, and consumer queries. Check whether new
 auth/admin/data paths bypass the shared event path or whether framework upgrades
-add automatic sensitive capture. Inspect removed events and weakened tests.
+add automatic sensitive capture. Treat model, prompt, guardrail, embedding, and
+index version changes as drift triggers: confirm attribution follows the new
+version, baselines are revalidated, and canary or evaluation results exist.
+Inspect removed events and weakened tests.
 Distinguish a removed duplicate from lost coverage, and a changed implementation
 from an actual semantic regression.
 

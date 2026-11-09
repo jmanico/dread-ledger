@@ -241,6 +241,42 @@ signals and affected data categories, never the disclosed content.
 - **SEC-090:** Detection and response actions, including alerts raised, accounts
   contained, sessions revoked, workloads isolated, and remediation failures.
 
+## AI model, prompt, and retrieval drift
+
+Models, prompts, guardrails, and retrieval corpora change after deployment, and
+attackers probe those changes. Record version, document, and rule references
+under the AI rules in the
+[event contract](event-contract.md#ai-model-and-retrieval-context), never
+prompt, completion, query, chunk, or system-instruction text. Record results
+from existing guardrails, evaluations, baselines, and drift detectors; a
+missing detector or baseline is unavailable_signal.
+
+- **SEC-091:** Model-call attribution to the served model and provider, prompt
+  template, guardrail or policy, and retrieval index and embedding-model
+  versions, with bounded route, tenant, and operation context.
+- **SEC-092:** Model, prompt-template, system-instruction, guardrail, and
+  embedding-model changes, including registry pushes, promotions, rollbacks,
+  and signature or provenance-verification failures.
+- **SEC-093:** Knowledge-base changes, including document ingestion, update,
+  quarantine, deletion, purge, and index rebuilds, recording source,
+  provenance, trust tier, ingest-scan result, approval, and corpus version.
+- **SEC-094:** Retrieval records with document or chunk IDs, rank, score,
+  source and trust tier, index and embedding-model versions, and the tenant or
+  access filter applied, sufficient to identify what the model received.
+- **SEC-095:** Retrieval anomalies, including unauthorized cross-tenant hits,
+  score-distribution shifts after re-indexing, a new or single document ranking
+  for many unrelated queries, and low-trust sources in high-risk answers.
+- **SEC-096:** Guardrail, content-policy, and refusal outcomes for model calls,
+  including detected system instructions or other protected text in output.
+- **SEC-097:** Drift detections against segmented baselines for input traits,
+  output, token spend, tool-call mix or sequence, and refusal and guardrail
+  rates, plus baseline creation, revalidation, and replacement.
+- **SEC-098:** Canary-prompt and safety-evaluation results after model, prompt,
+  guardrail, tool, or index changes, recording suite version and outcome
+  counts.
+- **SEC-099:** AI kill-switch activation and release for tools or features, and
+  rollback of model, prompt, guardrail, or index versions, with outcomes.
+
 ## Requirements for every event
 
 - Record event and ingestion times, event type, actor or workload identity,

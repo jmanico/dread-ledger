@@ -10,12 +10,14 @@ run only relevant non-production baseline checks already authorized by the task.
 
 Map entry points, authentication/authorization decisions, privileged operations,
 sensitive data access/export, background jobs, management commands, consoles,
-migrations, operations scripts, external identity providers, and tenant
-boundaries to actual files and symbols. Inventory existing logging calls,
-framework middleware, automatic request/exception capture, collector transforms,
-transports, sinks, filters, trace sampling, retention, access controls,
-consumers, and alerts. Distinguish missing evidence from confirmed missing
-logging. Do not read real logs.
+migrations, operations scripts, external identity providers, tenant boundaries,
+model calls, prompt and guardrail configuration, and retrieval and corpus
+ingestion paths to actual files and symbols. Inventory existing logging calls,
+framework middleware, automatic request/exception capture, LLM/agent tracing
+content capture, collector transforms, transports, sinks, filters, trace
+sampling, retention, access controls, consumers, alerts, evaluation suites, and
+drift baselines. Distinguish missing evidence from confirmed missing logging. Do
+not read real logs.
 
 Build an event ledger: existing trigger and coverage; gap; existing or proposed
 application event name; safe context; priority and rationale; privacy/cost risk;

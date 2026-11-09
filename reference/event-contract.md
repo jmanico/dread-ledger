@@ -149,6 +149,54 @@ detector-specific documented meaning. Unknown confidence is not high confidence.
 A client chooses neither trusted provenance nor severity. Consumer text says
 reported or matched; these fields do not establish successful exploitation.
 
+## AI model and retrieval context
+
+Drift can be attributed only when each model call and retrieval records what
+served it. For the AI drift items in the
+[security event checklist](security-events.md), map these conditional fields
+to the existing schema: `model_ref`, `provider_ref`, `prompt_version`,
+`guardrail_version`, `index_version`, `embedding_model_version`,
+`route_template`, `retrieval_ref`, `doc_refs`, `retrieval_filter_ref`,
+`baseline_version`, and `eval_suite_version`. Take versions from deployment
+configuration, the model registry, or the serving response, never from request
+input or model output. Record requested and served models separately when they
+can differ. Bound `doc_refs` to the retrieved top-k, each entry limited to an
+opaque document or chunk ID, rank, score, and trust tier. Record the tenant and
+access filter actually applied, not the filter requested.
+
+Never record prompt, completion, query, chunk, or system-instruction text, or
+unkeyed hashes of it: anyone can hash likely inputs and compare. Correlate
+through `interaction_id` or `retrieval_ref`; approved keyed pseudonymization
+follows the identity rules above. Keep document IDs stable across re-indexing so
+investigators can purge poisoned content and find the answers it influenced.
+
+Where the application already uses OpenTelemetry GenAI semantic conventions,
+map to them instead of adding parallel names, for example
+`gen_ai.operation.name`, `gen_ai.provider.name`, `gen_ai.request.model`,
+`gen_ai.response.model`, `gen_ai.usage.input_tokens`,
+`gen_ai.usage.output_tokens`, and `gen_ai.prompt.version`. Limit
+`gen_ai.retrieval.documents` to document `id` and `score`; its schema permits
+additional properties that could carry content. These conventions have
+Development stability: pin the instrumentation version and conventions
+revision, record the schema URL, and verify backend field mappings after each
+upgrade. Keep content capture disabled for `gen_ai.input.messages`,
+`gen_ai.output.messages`, `gen_ai.system_instructions`,
+`gen_ai.tool.call.arguments`, `gen_ai.tool.call.result`, and
+`gen_ai.retrieval.query.text`, and test SDK, exception, and fallback paths.
+
+Rates such as refusal, guardrail-hit, and canary pass rates need bounded
+segments: route template, tenant or approved tenant class, operation, and model
+and prompt version. Tenant and key cardinality can be attacker-influenced;
+bound segment state under the delivery contract. Derive security rates from
+unsampled counts; a rate built from diagnostic trace samples must record its
+sampling basis and is not complete evidence. A model, prompt, guardrail, or
+index version change starts a new baseline segment or requires documented
+revalidation. Drift detections follow the detector rules above and also record
+`baseline_version`, segment, window, statistic, and the approved threshold
+reference. An existing detector's technique reference, such as a MITRE ATLAS
+ID, is rule metadata. A drift detection reports a change, not an attack or its
+absence.
+
 ## Delivery and failure contract
 
 For each event class, write down producer acceptance, queue admission, durable

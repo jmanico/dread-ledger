@@ -10,8 +10,10 @@ small batch only.
 
 Use reference/security-events.md to review privilege and policy changes,
 sensitive data, key-management changes, platform administration, repository and
-deployment controls, and high-impact agent or response actions. Include existing
-response outcomes without authorizing containment or remediation in this pass.
+deployment controls, model/prompt/guardrail and knowledge-base changes, and
+high-impact agent or response actions, including AI kill switches, rollbacks,
+and unauthorized cross-tenant retrieval. Include existing response outcomes
+without authorizing containment or remediation in this pass.
 
 Review the assessment's highest-impact gaps before selecting a batch. Consider
 account takeover, cross-tenant access, privileged misuse, sensitive-data loss,
